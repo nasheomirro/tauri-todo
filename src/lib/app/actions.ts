@@ -18,13 +18,10 @@ export class Actions {
 	}
 
 	updateTodo(todo: Todo) {
-		const todos = get(this.#todos);
-		if (todos.find((_todo) => _todo.id === todo.id)) {
-			this.#todos.update((todos) => todos.map((_todo) => (_todo.id === todo.id ? todo : _todo)));
-		}
+		this.#todos.update((todos) => todos.map((_todo) => (_todo.id === todo.id ? todo : _todo)));
 	}
 
-	deleteTodo(todo: Tag) {
+	deleteTodo(todo: Todo) {
 		this.#todos.update((todos) => todos.filter((_todo) => _todo.id !== todo.id));
 	}
 

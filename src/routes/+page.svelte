@@ -1,21 +1,10 @@
 <script lang="ts">
-	import { tags, todos } from '$lib/app';
+	import { actions, tags, todos } from '$lib/app';
 	import { sortTagsByLexical, sortTodosByLatest } from '$lib/app/utils';
 
 	$: sortedTodos = sortTodosByLatest($todos);
 	$: sortedTags = sortTagsByLexical($tags);
 </script>
-
-<nav>
-	<ul>
-		<li>
-			<a href="create-todo">create todo</a>
-		</li>
-		<li>
-			<a href="create-tag">create tag</a>
-		</li>
-	</ul>
-</nav>
 
 <main>
 	<h2>Todos</h2>
@@ -28,6 +17,8 @@
 						<li>{tag.name}</li>
 					{/each}
 				</ul>
+				<a href="/todo/{todo.id}">edit</a>
+				<button on:click={() => actions.deleteTodo(todo)}>delete</button>
 			</li>
 		{/each}
 	</ul>
