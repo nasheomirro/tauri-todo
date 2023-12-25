@@ -7,7 +7,7 @@
     "distDir": "../build"
   },
   "package": {
-    "productName": "m-grades",
+    "productName": "todo-app",
     "version": "0.1.0"
   },
   "tauri": {

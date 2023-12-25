@@ -1,26 +1,26 @@
 <script lang="ts">
 	import { actions } from '$lib/app';
 	import { nanoid } from 'nanoid';
-	import type { Todo } from '$lib/types';
+	import type { Tag, Todo } from '$lib/types';
+	import TagSelect from '$lib/forms/TagSelect.svelte';
+
+	let tags: Tag[] = [];
+	let name: string = '';
 
 	const handleSubmit = (evt: SubmitEvent) => {
-		const data = new FormData(evt.currentTarget as HTMLFormElement);
-		const name = data.get('name');
+		const todo: Todo = {
+			name,
+			tags: tags,
+			dateCreated: new Date(),
+			id: nanoid(12)
+		};
 
-		if (typeof name === 'string') {
-			const todo: Todo = {
-				name,
-				tags: [],
-				dateCreated: new Date(),
-				id: nanoid(12)
-			};
-
-			actions.addTodo(todo);
-		}
+		actions.addTodo(todo);
 	};
 </script>
 
 <form action="/" on:submit={handleSubmit}>
-	<input type="text" name="name" id="name" />
+	<input bind:value={name} type="text" name="name" id="name" />
+	<TagSelect bind:selected={tags} />
 	<button>submit</button>
 </form>
