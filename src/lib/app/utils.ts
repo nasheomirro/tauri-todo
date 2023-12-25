@@ -9,7 +9,11 @@ export function getTodoById(todos: Todo[], id: string) {
 }
 
 export function getTodoByTag(todos: Todo[], tag: Tag) {
-	return todos.filter((todo) => todo.tags.find((_tag) => _tag.id === tag.id));
+	return todos.filter((todo) => todo.tagIds.find((tagId) => tagId === tag.id));
+}
+
+export function filterTagByIds(tags: Tag[], ids: string[]) {
+	return tags.filter((tag) => ids.includes(tag.id));
 }
 
 export function sortTodosByLatest(todos: Todo[]) {

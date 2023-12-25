@@ -41,7 +41,7 @@ export class Actions {
 		this.#todos.update((todos) =>
 			todos.map((todo) => ({
 				...todo,
-				tags: todo.tags.filter((_tag) => _tag.id !== tag.id)
+				tags: todo.tagIds.filter((id) => id !== tag.id)
 			}))
 		);
 	}

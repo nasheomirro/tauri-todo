@@ -3,4 +3,7 @@
 	export let data;
 </script>
 
-<TodoForm id={data.id} />
+<!-- we might not need it, it depends on future implementation -->
+{#key data.id}
+	<TodoForm id={data.id} />
+{/key}

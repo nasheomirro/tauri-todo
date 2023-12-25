@@ -7,7 +7,7 @@
 			<a href="/todo/new">create todo</a>
 		</li>
 		<li>
-			<a href="create-tag">create tag</a>
+			<a href="tag/new">create tag</a>
 		</li>
 	</ul>
 </nav>
